@@ -7,27 +7,29 @@
 a binary and sequential search.
 */
 class SearchAlgorithms {
-  constructor(array) {
+  constructor(Array) {
     try {
-        if(!Array.isArray(prArray)){
+        if(!Array.isArray(Array)){
           throw "Value entered is not an array";
         }
+        this.Array == Array;
     } catch (e) {
       console.log(e);
     }
   };
 
   //This does the Binary search of the data in the array
-  Binary() {
+  Binary(term) {
     var leftMost = 0;
-    var rightMost = this.array.length - 1;
+    var rightMost = this.Array.length - 1;
     var mapIndex;
     try {
+      Array.sort(Array);
       while(leftMost <= rightMost) {
           mapIndex = Math.floor((leftMost + rightMost) / 2);
-          if(this.array[mapIndex] < (term)) {
+          if(this.Array[mapIndex] < (term)) {
               leftMost = mapIndex + 1;
-          } else if(this.array[mapIndex] > (term)) {
+          } else if(this.Array[mapIndex] > (term)) {
               rightMost = mapIndex - 1;
           } else {
               return mapIndex;
@@ -40,12 +42,12 @@ class SearchAlgorithms {
   };
 
   //This does the sequential search of the data which is entered.
-  Sequential() {
-    for(var i = 0; i < this.array.length; i++) {
-        if(this.array[i] == (term)) {
+  Sequential(term) {
+    for(var i = 0; i < this.Array.length; i++) {
+        if(this.Array[i] == (term)) {
             return i;
         }
     }
     return -1;
-    };
+  };
 }
