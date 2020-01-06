@@ -2,55 +2,52 @@
 @Title: Binary Search Program
 @Date: 26/12/19
 @Author: Peter Seatter
-@Verson: 1
+@Verson: 2
 @Description: Allows users to input an elements into an array and it will do
 a binary and sequential search.
 */
 class SearchAlgorithms {
-
-  boolean searching = true;
-
-  constructor(array) {
-    this.array = Array.isArray([/*data for array is put here*/]);
+  constructor(Array) {
+    try {
+        if(!Array.isArray(Array)){
+          throw "Value entered is not an array";
+        }
+        this.Array == Array;
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   //This does the Binary search of the data in the array
-  function Binary() {
+  Binary(term) {
     var leftMost = 0;
-    var rightMost = array.length - 1;
+    var rightMost = this.Array.length - 1;
     var mapIndex;
-    while(leftMost <= rightMost) {
-        mapIndex = Math.floor((leftMost + rightMost) / 2);
-        if(array[mapIndex].compareTo(term) < 0) {
-            leftMost = mapIndex + 1;
-        } else if(array[mapIndex].compareTo(term) > 0) {
-            rightMost = mapIndex - 1;
-        } else {
-            return mapIndex;
-        }
+    try {
+      Array.sort(Array);
+      while(leftMost <= rightMost) {
+          mapIndex = Math.floor((leftMost + rightMost) / 2);
+          if(this.Array[mapIndex] < (term)) {
+              leftMost = mapIndex + 1;
+          } else if(this.Array[mapIndex] > (term)) {
+              rightMost = mapIndex - 1;
+          } else {
+              return mapIndex;
+          }
+      }
+    } catch (e) {
+      console.log(e);
     }
     return -1;
   };
 
   //This does the sequential search of the data which is entered.
-  function Sequential() {
-    for(Integer i = 0; i < array.length; i++) {
-        if(array[i].compareTo(term) == 0) {
+  Sequential(term) {
+    for(var i = 0; i < this.Array.length; i++) {
+        if(this.Array[i] == (term)) {
             return i;
         }
     }
     return -1;
-    };
-
-  //starts a try catch statement say if data has been entered into the array of not then it will not work
-  try {
-    while (searching == true) {
-      Binary();
-      Sequential();
-    } else {
-      searching = false;
-    }
-  } catch (e) {
-    alert ("You've got an error in your loop" + e);
-  }
+  };
 }
