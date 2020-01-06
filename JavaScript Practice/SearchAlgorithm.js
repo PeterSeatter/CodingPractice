@@ -24,7 +24,7 @@ class SearchAlgorithms {
     var rightMost = this.Array.length - 1;
     var mapIndex;
     try {
-      Array.sort(Array);
+      Array.sort(this.Array);
       while(leftMost <= rightMost) {
           mapIndex = Math.floor((leftMost + rightMost) / 2);
           if(this.Array[mapIndex] < (term)) {
